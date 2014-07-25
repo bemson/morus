@@ -4,6 +4,8 @@
 
 by Bemi Faison
 
+[![Build Status](https://travis-ci.org/bemson/morus.png?branch=master)](https://travis-ci.org/bemson/morus)
+
 
 ## Description
 
@@ -108,6 +110,7 @@ require(['morus'], function (Morus) {
 
 Morus has unit tests written with [Mocha](http://visionmedia.github.io/mocha), using [Chai](http://chaijs.com/) and [Sinon](http://sinonjs.org) (via the [Sinon-chai](http://chaijs.com/plugins/sinon-chai) plugin).
 
+  * To browse test results, visit [Morus on Travis-CI](https://travis-ci.org/bemson/morus).
   * To run the tests in Node, install the module or clone the git repo, then invoke `npm test`
   * To run the tests in a browser: (1) install morus, then (2) load _test/index.html_ locally. (Unfortunately, the tests do not run in IE6, 7, or 8.)
 
