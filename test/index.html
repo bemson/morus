@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Morus Test Suite</title>
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+</head>
+<body>
+  <h1>Morus Test Suite</h1>
+  <p>Testing version <span id="salt-version">0.0.0</span>, by <a href="mailto:bemson@gmail.com">Bemi Faison</a>. Source files on <a href="https://github.com/bemson/morus">github.com</a></p>
+  <hr />
+  <div id="mocha"></div>
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../node_modules/chai/chai.js"></script>
+  <script src="../node_modules/sinon-chai/lib/sinon-chai.js"></script>
+  <script src="../node_modules/sinon/lib/sinon.js"></script>
+  <script src="../node_modules/sinon/lib/sinon/spy.js"></script>
+  <script>
+    mocha.setup('bdd');
+    chai.should();
+    expect = chai.expect;
+  </script>
+  <script src="../src/morus.js"></script>
+  <script src="concepts.encoding.js"></script>
+  <script src="concepts.decoding.js"></script>
+  <script src="api.morus.js"></script>
+  <script src="api.morus.randomize.js"></script>
+  <script src="api.morus.encode.js"></script>
+  <script src="api.morus.decode.js"></script>
+  <script src="api.morus.ascii.js"></script>
+  <script src="api.morus.genCipher.js"></script>
+  <script>
+    mocha.run();
+  </script>
+</body>
+</html>

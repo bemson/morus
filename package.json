@@ -1,0 +1,29 @@
+{
+  "name": "morus",
+  "version": "0.0.0",
+  "description": "A progressive substitution cipher",
+  "main": "src/morus.js",
+  "devDependencies": {
+    "mocha": "~1.7",
+    "sinon": "~1.5",
+    "chai": "~1.4",
+    "sinon-chai": "~2.3"
+  },
+  "keywords": [
+    "obfuscate",
+    "encrypt"
+  ],
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "author": {
+    "name": "Bemi Faison",
+    "email": "bemson@gmail.com",
+    "url": "https://github.com/bemson"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/bemson/morus.git"
+  },
+  "licenses": ["MIT"]
+}

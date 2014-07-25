@@ -1,0 +1,16 @@
+{
+    "strict": false,
+    "expr": true,
+    "boss": true,
+    "predef": [
+        "Morus",
+        "describe",
+        "expect",
+        "it",
+        "before",
+        "beforeEach",
+        "after",
+        "afterEach",
+        "sinon"
+    ]
+}
