@@ -64,7 +64,7 @@ console.log(cipherC.encode('obfuscate me'));
 ## Download and Installation
 
 Morus has no dependencies, works within modern JavaScript environments,
-and is available on [bower](http://bower.io/search/?q=morus), [component](), and [npm](https://www.npmjs.org/package/morus) as a [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) ([Node](http://nodejs.org/)) or [AMD](http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition) ([RequireJS](http://requirejs.org)) module.
+and is available on [bower](http://bower.io/search/?q=morus), [component](http://component.github.io/component.io), and [npm](https://www.npmjs.org/package/morus) as a [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) ([Node](http://nodejs.org/)) or [AMD](http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition) ([RequireJS](http://requirejs.org)) module.
 
 If Morus isn't compatible with your favorite runtime, please file a bug or pull-request (preferred).
 
