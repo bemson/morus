@@ -1,0 +1,27 @@
+{
+  "name": "morus",
+  "version": "0.0.0",
+  "homepage": "https://github.com/bemson/morus",
+  "authors": [
+    "Bemi Faison <bemson@gmail.com>  (http://learnings-bemson.blogspot.com)"
+  ],
+  "description": "A progressive substitution cipher",
+  "main": "src/morus.js",
+  "dependencies": {},
+  "keywords": [
+    "obfuscate",
+    "encrypt"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "*.json",
+    "node_modules",
+    "test",
+    "bower_components",
+    "components",
+    "README.md",
+    "LICENSE",
+    "morus.min.js"
+  ]
+}
