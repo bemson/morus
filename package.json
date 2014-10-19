@@ -1,6 +1,6 @@
 {
   "name": "morus",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A progressive substitution cipher",
   "main": "src/morus.js",
   "devDependencies": {

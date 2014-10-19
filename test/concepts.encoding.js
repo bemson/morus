@@ -1,5 +1,5 @@
 describe('Encoding', function () {
-  
+
   var
     phrase = 'The quick brown fox jumps over the lazy dog.',
     cipher;
@@ -40,7 +40,7 @@ describe('Encoding', function () {
 
   });
 
-  it('should be unique after changing .shift', function () {
+  it('should be unique after changing .index', function () {
     var
       outputs = [],
       output,
@@ -48,7 +48,7 @@ describe('Encoding', function () {
 
     // ensure all 5 instances have different outputs
     while (ln--) {
-      cipher.shift++;
+      cipher.index++;
       output = cipher.encode(phrase);
       outputs.should.not.contain(output);
       outputs.push(output);
@@ -56,10 +56,10 @@ describe('Encoding', function () {
 
   });
 
-  it('should not be unique when .shift is incremented by 95', function () {
+  it('should not be unique when .index is incremented by 95', function () {
     var output = cipher.encode(phrase);
 
-    cipher.shift += 95;
+    cipher.index += 95;
     cipher.encode(phrase).should.equal(output);
   });
 

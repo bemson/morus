@@ -14,15 +14,15 @@ describe( 'Morus#randomize()', function () {
     cipher.randomize().should.equal(cipher);
   });
 
-  it('should change the .shift member, (at least) once per 100 calls', function () {
+  it('should change the .index member, (at least) once per 100 calls', function () {
     var
       ln = 100,
-      lastShift = cipher.shift,
+      lastIndex = cipher.index,
       passed = 0;
 
     while (ln--) {
       cipher.randomize();
-      if (lastShift !== cipher.randomize().shift) {
+      if (lastIndex !== cipher.randomize().index) {
         passed = 1;
         break;
       }
@@ -31,16 +31,16 @@ describe( 'Morus#randomize()', function () {
     passed.should.be.ok;
   });
 
-  it('should change the .map member', function () {
-    var oldMap = cipher.map;
+  it('should change .key member contents', function () {
+    var oldKey = JSON.stringify(cipher.key);
 
     cipher.randomize();
-    oldMap.should.not.equal(cipher.map);
+    oldKey.should.not.equal(JSON.stringify(cipher.key));
   });
 
   it('should be invoked when initializing an instance with no arguments', function () {
     var spy = sinon.spy(Morus.prototype, 'randomize');
-    
+
     new Morus();
     spy.should.have.been.calledOnce;
   });

@@ -1,5 +1,5 @@
 /*!
- * Morus v0.0.0
+ * Morus v1.0.0
  * http://github.com/bemson/morus/
  *
  * Copyright, Bemi Faison
@@ -14,37 +14,42 @@
       ASCII_MAP = {},
       ASCII_CHARS = [],
       ASCII_STRING,
+      JSONstringify = JSON.stringify,
+      JSONparse = JSON.parse,
       mathRandom = Math.random,
       mathRound = Math.round,
+      protoHas = Object.prototype.hasOwnProperty,
       codeAffix = 'c',
-      r_printables = /[ -~]/g;
+      r_printables = /[ -~]/g,
+      r_cipher = /^(\d+)({.+})$/
+    ;
 
     // build ASCII character maps
     !function () {
       var
         ln = 95,
         code,
-        char;
+        character;
 
       while (ln--) {
         code = ln + 32;
-        char = String.fromCharCode(code);
+        character = String.fromCharCode(code);
 
         ASCII_MAP[code + codeAffix] =
         ASCII_CHARS[ln] =
-          char;
-        ASCII_MAP[char] = code;
+          character;
+        ASCII_MAP[character] = code;
       }
       ASCII_STRING = ASCII_CHARS.join('');
     }();
 
 
     // generate substitution table
-    function genCipher() {
+    function genKey() {
       var
         cipher = {},
         chars = ASCII_CHARS.concat(),
-        char,
+        character,
         code,
         idx,
         ln = 95;
@@ -52,47 +57,36 @@
       while (ln--) {
         idx = mathRound(mathRandom() * ln);
         code = ln + 32;
-        char = chars[idx];
-        cipher[code + codeAffix] = char;
-        cipher[char] = code;
+        character = chars[idx];
+        cipher[code + codeAffix] = character;
+        cipher[character] = code;
         chars.splice(idx, 1);
       }
       return cipher;
     }
 
-    function Morus (shift, map) {
-      var me = this;
-
-      if (arguments.length) {
-        me.shift = ~~shift;
-        // only accept objects
-        if (map && typeof map === 'object') {
-          me.map = map;
-        } else {
-          me.map = genCipher();
-        }
-      } else {
-        me.randomize();
-      }
+    function Morus () {
+      // generate random index and key
+      this.randomize();
     }
 
     // obfuscate text
     Morus.prototype.encode = function (str) {
       var
         me = this,
-        map = me.map,
-        pos = me.shift,
+        key = me.key,
+        pos = me.index,
         code;
 
-      return str.replace(r_printables, function (char) {
+      return str.replace(r_printables, function (character) {
 
-        code = ASCII_MAP[char];
+        code = ASCII_MAP[character];
         code -= 32 - pos;
         code %= 95;
         code += 32;
 
         pos++;
-        return map[code + codeAffix];
+        return key[code + codeAffix];
       });
     };
 
@@ -100,13 +94,13 @@
     Morus.prototype.decode = function (str) {
       var
         me = this,
-        map = me.map,
-        pos = me.shift,
+        key = me.key,
+        pos = me.index,
         code;
 
-      return str.replace(r_printables, function (char) {
+      return str.replace(r_printables, function (character) {
 
-        code = map[char];
+        code = key[character];
         code -= 32 + pos;
         if (code < 0) {
           code %= 95;
@@ -124,13 +118,36 @@
     // generate random properties
     Morus.prototype.randomize = function () {
       var me = this;
-      me.map = genCipher();
-      me.shift = mathRound(mathRandom() * 95);
+      me.key = genKey();
+      me.index = mathRound(mathRandom() * 95);
       return me;
     };
 
+    // set or get given key/index
+    Morus.prototype.cipher = function (val) {
+      var
+        me = this,
+        parts;
+
+      if (arguments.length) {
+        // setter
+        if (
+          typeof val == 'string' &&
+          (parts = r_cipher.exec(val))
+        ) {
+          me.index = +parts[1];
+          me.key = JSONparse(parts[2]);
+          return true;
+        }
+        return false;
+      } else {
+        // getter
+        return me.index + JSONstringify(me.key);
+      }
+    };
+
     // expose statics
-    Morus.genCipher = genCipher;
+    Morus.genKey = genKey;
     Morus.ASCII = ASCII_STRING;
 
     return Morus;

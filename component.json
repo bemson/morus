@@ -2,7 +2,7 @@
   "name": "morus",
   "repo": "bemson/morus",
   "description": "A progressive substitution cipher",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "keywords": [
     "obfuscate",
     "encrypt"

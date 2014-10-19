@@ -1,19 +1,19 @@
-describe( 'Morus::genCipher()', function () {
+describe( 'Morus::genKey()', function () {
 
   it('should be a function', function () {
-    Morus.genCipher.should.be.a('function');
+    Morus.genKey.should.be.a('function');
   });
 
   it('should return an object with 188 keys', function () {
-    var map = Morus.genCipher();
-    map.should.be.an('object');
-    Object.keys(map).should.have.lengthOf(190);
+    var key = Morus.genKey();
+    key.should.be.an('object');
+    Object.keys(key).should.have.lengthOf(190);
   });
 
   it('should return an object with keys for all printable ascii characters', function () {
     var
-      map = Morus.genCipher(),
-      uniques = Object.keys(map).filter(function (key) {
+      key = Morus.genKey(),
+      uniques = Object.keys(key).filter(function (key) {
         return key.length === 1;
       }).join('');
 
@@ -26,8 +26,8 @@ describe( 'Morus::genCipher()', function () {
 
   it('should return an object with keys for each printable ascii character code', function () {
     var
-      map = Morus.genCipher(),
-      uniques = Object.keys(map)
+      key = Morus.genKey(),
+      uniques = Object.keys(key)
         .filter(function (key) {
           return key.length > 1;
         })

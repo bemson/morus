@@ -1,5 +1,5 @@
 describe('Decoding', function () {
-  
+
   var
     phrase = 'The quick brown fox jumps over the lazy dog.',
     coded,
@@ -14,13 +14,13 @@ describe('Decoding', function () {
     cipher.decode(coded).should.equal(phrase);
   });
 
-  it('should not work with previous encodes when .shift changes', function () {
-    cipher.shift++;
+  it('should not work with previous encodes when .index changes', function () {
+    cipher.index++;
     cipher.decode(coded).should.not.equal(phrase);
   });
 
-  it('should not work with previous encodes when .map changes', function () {
-    cipher.map = Morus.genCipher();
+  it('should not work with previous encodes when .key changes', function () {
+    cipher.key = Morus.genKey();
     cipher.decode(coded).should.not.equal(phrase);
   });
 
