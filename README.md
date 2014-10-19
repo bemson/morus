@@ -35,7 +35,7 @@ console.log('decoded:', cipher.decode(coded));
 // decoded: Hello world!
 ```
 
-### Copy, capture, and create a cipher
+### Copy the cipher
 
 Each Morus instance has a unique "cipher" for translating strings. Morus ciphers consist of a _key_ (i.e., substitution-table) and _index_, stored in properties of the same name.
 
