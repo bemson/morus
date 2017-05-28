@@ -112,7 +112,7 @@ require(['morus'], function (Morus) {
 
 ## Testing
 
-Morus has unit tests written for [Mocha](http://visionmedia.github.io/mocha), using [Chai](http://chaijs.com/) and [Sinon](http://sinonjs.org) (via the [Sinon-chai](http://chaijs.com/plugins/sinon-chai) plugin).
+Morus has unit tests written for [Mocha](http://mochajs.org/), using [Chai](http://chaijs.com/) and [Sinon](http://sinonjs.org) (via the [Sinon-chai](http://chaijs.com/plugins/sinon-chai) plugin).
 
   * To review test results, visit [Morus on Travis-CI](https://travis-ci.org/bemson/morus).
   * To run the tests in Node, run `npm test`.
